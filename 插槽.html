@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+    <slot>
+        <h1>默认插槽</h1>
+        <template v-slot:slotname>
+            <h1>vue2.5</h1>
+        </template>
+        <h1 slot="slotname">vue2.6</h1>
+    </slot>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+    // 插槽可以理解为传递复杂的属性
+
+    // 作用域插槽， 返回组件的函数
+    Vue.component('slot',{
+        //是用该组件时， 标签内的数据将替换到slot
+        // 具名插槽
+        template: `
+        <div>
+            <slot></slot>
+            <slot name="slotname">默认值</slot>
+        </div>
+        `
+    })
+
+    let vm = new Vue({
+        el:'#app'
+    })
+</script>
+</body>
+</html>
