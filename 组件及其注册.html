@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<todo-item></todo-item>  没有挂载vue实例所以不生效-->
+<div id="app">
+    <todo-list></todo-list>
+
+    <todo-item title="aaaa"></todo-item>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    // 全局注册组件， 可以直接在挂载了vue对象的dom节点内部使用
+    Vue.component('todo-item',{
+        props:{
+            title: String
+        },
+        template: `
+        <span>{{title}},{{a}}</span>
+        `,
+        data: function (){
+            return {
+                a: 1
+            }
+        },
+        methods: {
+        }
+    })
+
+    // 组件的模版里也可以使用自定义组件
+    Vue.component('todo-list',{
+        template: `
+        <div>
+            <todo-item title="aaaa"></todo-item>
+            <todo-item title="bbbb"></todo-item>
+        </div>
+        `
+    })
+
+    // 创建vue 实例挂载到<div id="app">
+    let vm = new Vue({
+        el:'#app'
+    })
+
+
+</script>
+
+
+</body>
+</html>
