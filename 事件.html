@@ -6,7 +6,7 @@
 </head>
 <body>
 <div id="app">
-<!--    自定义事件，由子组件 $emit触发-->
+<!--    自定义事件，$emit触发-->
     <event-test @delete="handleDelete"></event-test>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -42,6 +42,7 @@
         `,
         methods: {
             handleClick (e){
+                // 触发当前实例上的事件
                 this.$emit("delete")
             }
         }
